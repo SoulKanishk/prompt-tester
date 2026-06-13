@@ -1,3 +1,8 @@
+import subprocess
+import os
+
+if not os.path.exists("results.db"):
+    subprocess.run(["python", "runner.py"])
 import streamlit as st
 import pandas as pd
 import plotly.express as px
