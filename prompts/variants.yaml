@@ -1,0 +1,38 @@
+task: "football_sentiment"
+test_cases:
+  - input: "Mbappe scored a last minute winner against Barcelona"
+    expected: "positive"
+  - input: "Referee gave a controversial red card in the final"
+    expected: "negative"
+  - input: "The match ended 0-0 after 90 minutes"
+    expected: "neutral"
+  - input: "Ronaldo missed a penalty in extra time and Portugal got eliminated"
+    expected: "negative"
+  - input: "Virat scored a brilliant free kick from 35 yards"
+    expected: "positive"
+  - input: "Manager made 3 substitutions but none of them made an impact"
+    expected: "neutral"
+
+variants:
+  - id: "v1_zero_shot"
+    description: "Basic classification"
+    system: "You are a football analyst."
+    user_template: "Classify this football news as positive, negative, or neutral: {input}. Reply with one word only."
+
+  - id: "v2_fan_perspective"
+    description: "From a passionate fan's view"
+    system: "You are a passionate football fan who reacts emotionally to match events."
+    user_template: |
+      As a football fan, classify this news as positive, negative, or neutral:
+      "{input}"
+      Reply with one word only.
+
+  - id: "v3_expert_cot"
+    description: "Expert with reasoning"
+    system: "You are a professional football commentator and analyst."
+    user_template: |
+      Analyze this football event step by step, then classify as positive, negative, or neutral:
+      "{input}"
+      Format your response as:
+      Reasoning: <your analysis>
+      Label: <positive/negative/neutral>
