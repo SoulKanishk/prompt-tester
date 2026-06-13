@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from db import init_db, log_result
 
 load_dotenv()
-client = Groq(api_key=os.getenv(""))
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def score_output(output, expected):
     output_lower = output.lower()
